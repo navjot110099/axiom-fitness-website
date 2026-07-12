@@ -20,7 +20,7 @@ function ReadinessRing({ value }: { value: number }) {
         cy="70"
         r={r}
         fill="none"
-        stroke="#C7F94B"
+        stroke="#25A8FF"
         strokeWidth="10"
         strokeLinecap="round"
         strokeDasharray={c}

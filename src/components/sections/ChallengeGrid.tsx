@@ -17,9 +17,9 @@ import { CHALLENGES } from "@/lib/data";
 type Challenge = (typeof CHALLENGES)[number];
 
 const ACCENT_HEX: Record<string, string> = {
-  voltage: "#C7F94B",
+  voltage: "#25A8FF",
   ember: "#FF4D1C",
-  plasma: "#5AA9FF",
+  plasma: "#6FD3FF",
   gold: "#E9C46A",
 };
 

@@ -27,12 +27,12 @@ const DISC_META: Record<
   string,
   { icon: typeof Dumbbell; kicker: string; color: string }
 > = {
-  "Strength Lab": { icon: Dumbbell, kicker: "Powerlifting · Hypertrophy", color: "#C7F94B" },
+  "Strength Lab": { icon: Dumbbell, kicker: "Powerlifting · Hypertrophy", color: "#25A8FF" },
   "The Furnace": { icon: Flame, kicker: "HIIT · Conditioning", color: "#FF4D1C" },
   "Stillness Studio": { icon: Wind, kicker: "Yoga · Mobility", color: "#E9C46A" },
   "Iron & Rope": { icon: Zap, kicker: "Boxing · MMA", color: "#FF4D1C" },
-  "The Depths": { icon: Waves, kicker: "Swimming · Aqua", color: "#5AA9FF" },
-  "Reform Room": { icon: Activity, kicker: "Pilates · Barre", color: "#C7F94B" },
+  "The Depths": { icon: Waves, kicker: "Swimming · Aqua", color: "#6FD3FF" },
+  "Reform Room": { icon: Activity, kicker: "Pilates · Barre", color: "#25A8FF" },
 };
 
 const STEPS = ["Discipline", "Date", "Time", "Confirm"] as const;
@@ -95,7 +95,7 @@ export function BookingFlow() {
                   <div className="flex flex-col items-center gap-2">
                     <motion.span
                       animate={{
-                        backgroundColor: done || current ? "#C7F94B" : "#1E1E24",
+                        backgroundColor: done || current ? "#25A8FF" : "#1E1E24",
                         color: done || current ? "#0A0A0B" : "#6B6B76",
                         scale: current ? 1.1 : 1,
                       }}
@@ -450,7 +450,7 @@ function SuccessScreen({
               <motion.span
                 key={i}
                 className="absolute h-1.5 w-1.5 rounded-full"
-                style={{ backgroundColor: i % 2 ? "#C7F94B" : "#5AA9FF" }}
+                style={{ backgroundColor: i % 2 ? "#25A8FF" : "#6FD3FF" }}
                 initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
                 animate={{
                   x: Math.cos(angle) * dist,
@@ -472,7 +472,7 @@ function SuccessScreen({
               cy="26"
               r="24"
               fill="none"
-              stroke="#C7F94B"
+              stroke="#25A8FF"
               strokeWidth="2.5"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -481,7 +481,7 @@ function SuccessScreen({
             <motion.path
               d="M15 27 L23 34 L38 18"
               fill="none"
-              stroke="#C7F94B"
+              stroke="#25A8FF"
               strokeWidth="3.5"
               strokeLinecap="round"
               strokeLinejoin="round"

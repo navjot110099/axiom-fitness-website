@@ -79,13 +79,13 @@ function PillarCell({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(240px circle at var(--x,50%) var(--y,50%), rgba(199,249,75,0.10), transparent 60%)",
+            "radial-gradient(240px circle at var(--x,50%) var(--y,50%), rgba(37,168,255,0.10), transparent 60%)",
         }}
       />
       <div className="relative mb-16 flex items-center justify-between">
         <motion.span
           className="font-display text-4xl font-extrabold text-elevated"
-          whileInView={{ color: ["#17171C", "#C7F94B"] }}
+          whileInView={{ color: ["#17171C", "#25A8FF"] }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
         >

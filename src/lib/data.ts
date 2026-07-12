@@ -114,8 +114,8 @@ export const PRODUCT_CATEGORIES = ["All", "Apparel", "Nutrition", "Gear", "Acces
 
 /* ----------------------------- Nutrition ----------------------------- */
 export const MACRO_RINGS = [
-  { label: "Protein", value: 182, target: 200, unit: "g", color: "#C7F94B" },
-  { label: "Carbs", value: 246, target: 280, unit: "g", color: "#5AA9FF" },
+  { label: "Protein", value: 182, target: 200, unit: "g", color: "#25A8FF" },
+  { label: "Carbs", value: 246, target: 280, unit: "g", color: "#6FD3FF" },
   { label: "Fats", value: 61, target: 70, unit: "g", color: "#FF4D1C" },
 ];
 export const MEAL_PLANS = [
@@ -201,8 +201,8 @@ export const MEMBER = {
     { name: "Ring Craft", when: "Sat · 17:30", coach: "Kai Renner" },
   ],
   rings: [
-    { label: "Move", value: 78, color: "#C7F94B" },
-    { label: "Fuel", value: 64, color: "#5AA9FF" },
+    { label: "Move", value: 78, color: "#25A8FF" },
+    { label: "Fuel", value: 64, color: "#6FD3FF" },
     { label: "Rest", value: 91, color: "#FF4D1C" },
   ],
 };

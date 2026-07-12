@@ -26,10 +26,10 @@ const config: Config = {
         ash: "#9A9A94",
         faint: "#6A6A66",
         // Signal accents
-        voltage: "#C7F94B", // electric lime — primary energy
-        "voltage-deep": "#A6D62F",
+        voltage: "#25A8FF", // electric azure — primary energy
+        "voltage-deep": "#0B7BDD",
         ember: "#FF4D1C", // heat — HIIT / boxing
-        plasma: "#5AA9FF", // cool — recovery / ice / swim
+        plasma: "#6FD3FF", // icy cyan — recovery / ice / swim
         gold: "#E9C56A", // spa / premium membership
       },
       fontFamily: {
@@ -49,7 +49,7 @@ const config: Config = {
       },
       backgroundImage: {
         "aurora":
-          "radial-gradient(60% 80% at 15% 0%, rgba(199,249,75,0.10) 0%, transparent 60%), radial-gradient(50% 60% at 100% 20%, rgba(90,169,255,0.10) 0%, transparent 55%), radial-gradient(70% 90% at 50% 120%, rgba(255,77,28,0.08) 0%, transparent 60%)",
+          "radial-gradient(60% 80% at 15% 0%, rgba(37, 168, 255,0.10) 0%, transparent 60%), radial-gradient(50% 60% at 100% 20%, rgba(90,169,255,0.10) 0%, transparent 55%), radial-gradient(70% 90% at 50% 120%, rgba(255,77,28,0.08) 0%, transparent 60%)",
         "grain":
           "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
       },

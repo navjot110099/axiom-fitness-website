@@ -38,13 +38,13 @@ const REVENUE: { month: string; value: number }[] = [
 ];
 
 const DISCIPLINE_USE: { name: string; pct: number; color: string }[] = [
-  { name: "Strength Lab", pct: 92, color: "#C7F94B" },
+  { name: "Strength Lab", pct: 92, color: "#25A8FF" },
   { name: "The Furnace", pct: 84, color: "#FF4D1C" },
   { name: "The Yard", pct: 78, color: "#FF4D1C" },
-  { name: "Velodrome", pct: 71, color: "#5AA9FF" },
-  { name: "Reform Room", pct: 66, color: "#C7F94B" },
+  { name: "Velodrome", pct: 71, color: "#6FD3FF" },
+  { name: "Reform Room", pct: 66, color: "#25A8FF" },
   { name: "Stillness Studio", pct: 58, color: "#E9C46A" },
-  { name: "The Depths", pct: 44, color: "#5AA9FF" },
+  { name: "The Depths", pct: 44, color: "#6FD3FF" },
 ];
 
 const OCCUPANCY: { hour: string; pct: number }[] = [
@@ -170,7 +170,7 @@ function RevenueChart({ active }: { active: boolean }) {
               transition={{ delay: 0.3 + i * 0.05, duration: 0.7, ease: EASE }}
               className={`w-full rounded-t-md ${
                 i === REVENUE.length - 1
-                  ? "bg-voltage shadow-[0_0_18px_rgba(199,249,75,0.35)]"
+                  ? "bg-voltage shadow-[0_0_18px_rgba(37,168,255,0.35)]"
                   : "bg-elevated group-hover:bg-voltage/40"
               } transition-colors`}
             />

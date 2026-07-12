@@ -147,14 +147,14 @@ function ReadinessDial({ active }: { active: boolean }) {
           cy="75"
           r={r}
           fill="none"
-          stroke="#C7F94B"
+          stroke="#25A8FF"
           strokeWidth="9"
           strokeLinecap="round"
           strokeDasharray={c}
           initial={{ strokeDashoffset: c }}
           animate={active ? { strokeDashoffset: c - (val / 100) * c } : {}}
           transition={{ duration: 1.8, ease: EASE, delay: 0.3 }}
-          style={{ filter: "drop-shadow(0 0 8px #C7F94B55)" }}
+          style={{ filter: "drop-shadow(0 0 8px #25A8FF55)" }}
         />
       </svg>
       <div className="absolute flex flex-col items-center">
@@ -186,7 +186,7 @@ function LoadBars({ active }: { active: boolean }) {
               animate={active ? { height: `${(v / max) * 100}%` } : {}}
               transition={{ delay: 0.3 + i * 0.08, duration: 0.8, ease: EASE }}
               className={`w-full rounded-t-md ${
-                i === peak ? "bg-voltage shadow-[0_0_20px_rgba(199,249,75,0.35)]" : "bg-elevated"
+                i === peak ? "bg-voltage shadow-[0_0_20px_rgba(37,168,255,0.35)]" : "bg-elevated"
               }`}
             />
           </div>
@@ -220,8 +220,8 @@ function VolumeChart({ active }: { active: boolean }) {
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full min-w-[420px]">
         <defs>
           <linearGradient id="volFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#C7F94B" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#C7F94B" stopOpacity="0" />
+            <stop offset="0%" stopColor="#25A8FF" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#25A8FF" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[0.25, 0.5, 0.75].map((g) => (
@@ -245,7 +245,7 @@ function VolumeChart({ active }: { active: boolean }) {
         <motion.path
           d={linePath}
           fill="none"
-          stroke="#C7F94B"
+          stroke="#25A8FF"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -259,8 +259,8 @@ function VolumeChart({ active }: { active: boolean }) {
               cx={x(i)}
               cy={y(d.value)}
               r={i === data.length - 1 ? 5 : 3}
-              fill={i === data.length - 1 ? "#C7F94B" : "#0A0A0B"}
-              stroke="#C7F94B"
+              fill={i === data.length - 1 ? "#25A8FF" : "#0A0A0B"}
+              stroke="#25A8FF"
               strokeWidth="2"
               initial={{ opacity: 0, scale: 0 }}
               animate={active ? { opacity: 1, scale: 1 } : {}}

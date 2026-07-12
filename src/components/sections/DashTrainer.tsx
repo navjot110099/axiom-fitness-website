@@ -147,8 +147,8 @@ function ClientLoadChart({ active }: { active: boolean }) {
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
       <defs>
         <linearGradient id="trLoad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#5AA9FF" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#5AA9FF" stopOpacity="0" />
+          <stop offset="0%" stopColor="#6FD3FF" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#6FD3FF" stopOpacity="0" />
         </linearGradient>
       </defs>
       {[0.33, 0.66].map((g) => (
@@ -164,14 +164,14 @@ function ClientLoadChart({ active }: { active: boolean }) {
       <motion.path
         d={line}
         fill="none"
-        stroke="#5AA9FF"
+        stroke="#6FD3FF"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         animate={active ? { pathLength: 1 } : {}}
         transition={{ duration: 1.5, ease: EASE, delay: 0.3 }}
-        style={{ filter: "drop-shadow(0 0 6px #5AA9FF44)" }}
+        style={{ filter: "drop-shadow(0 0 6px #6FD3FF44)" }}
       />
     </svg>
   );
@@ -180,7 +180,7 @@ function ClientLoadChart({ active }: { active: boolean }) {
 /* ------------------------------------------------------------- adherence bar */
 
 function AdherenceBar({ value, active, delay }: { value: number; active: boolean; delay: number }) {
-  const color = value >= 85 ? "#C7F94B" : value >= 70 ? "#5AA9FF" : "#FF4D1C";
+  const color = value >= 85 ? "#25A8FF" : value >= 70 ? "#6FD3FF" : "#FF4D1C";
   return (
     <div className="h-1.5 w-full overflow-hidden rounded-full bg-void">
       <motion.div

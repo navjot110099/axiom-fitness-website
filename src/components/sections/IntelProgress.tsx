@@ -88,8 +88,8 @@ export function IntelProgress() {
           <svg viewBox={`0 0 ${W} ${H}`} className="mt-4 w-full" preserveAspectRatio="none">
             <defs>
               <linearGradient id="intel-area" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#C7F94B" stopOpacity="0.28" />
-                <stop offset="100%" stopColor="#C7F94B" stopOpacity="0" />
+                <stop offset="0%" stopColor="#25A8FF" stopOpacity="0.28" />
+                <stop offset="100%" stopColor="#25A8FF" stopOpacity="0" />
               </linearGradient>
             </defs>
 
@@ -120,7 +120,7 @@ export function IntelProgress() {
             <motion.path
               d={line}
               fill="none"
-              stroke="#C7F94B"
+              stroke="#25A8FF"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -136,8 +136,8 @@ export function IntelProgress() {
                   cx={p.x}
                   cy={p.y}
                   r={i === pts.length - 1 ? 5 : 3.5}
-                  fill={i === pts.length - 1 ? "#C7F94B" : "#0A0A0B"}
-                  stroke="#C7F94B"
+                  fill={i === pts.length - 1 ? "#25A8FF" : "#0A0A0B"}
+                  stroke="#25A8FF"
                   strokeWidth="2"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}

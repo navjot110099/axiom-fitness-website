@@ -38,8 +38,8 @@ export function ContactMap() {
               <stop offset="100%" stopColor="#0a0a0a" />
             </radialGradient>
             <linearGradient id="pinbeam" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#C7F94B" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#C7F94B" stopOpacity="0" />
+              <stop offset="0%" stopColor="#25A8FF" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#25A8FF" stopOpacity="0" />
             </linearGradient>
           </defs>
 
@@ -54,7 +54,7 @@ export function ContactMap() {
               width={p.w}
               height={p.h}
               rx="6"
-              fill="#C7F94B"
+              fill="#25A8FF"
               opacity="0.05"
             />
           ))}
@@ -75,7 +75,7 @@ export function ContactMap() {
           <motion.path
             d={ROUTE}
             fill="none"
-            stroke="#C7F94B"
+            stroke="#25A8FF"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeDasharray="6 8"
@@ -96,7 +96,7 @@ export function ContactMap() {
               cy={PIN.y}
               r="10"
               fill="none"
-              stroke="#C7F94B"
+              stroke="#25A8FF"
               strokeWidth="1.5"
               initial={{ scale: 0.4, opacity: 0.7 }}
               animate={{ scale: 4.2, opacity: 0 }}
@@ -112,7 +112,7 @@ export function ContactMap() {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 220, damping: 14, delay: 0.4 }}
           >
-            <circle cx={PIN.x} cy={PIN.y} r="9" fill="#C7F94B" />
+            <circle cx={PIN.x} cy={PIN.y} r="9" fill="#25A8FF" />
             <circle cx={PIN.x} cy={PIN.y} r="3.5" fill="#0a0a0a" />
           </motion.g>
         </svg>

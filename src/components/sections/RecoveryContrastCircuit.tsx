@@ -19,7 +19,7 @@ const STOPS = [
     name: "Contrast Suite",
     label: "Ice",
     body: "You step in and the cold takes the room. Vasoconstriction slams the door on inflammation; the nervous system snaps to attention.",
-    color: "#5AA9FF",
+    color: "#6FD3FF",
   },
   {
     at: 0.34,

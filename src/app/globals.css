@@ -124,7 +124,7 @@
 
   /* Voltage text gradient */
   .text-voltage-grad {
-    background: linear-gradient(100deg, #eaffb0 0%, #c7f94b 45%, #a6d62f 100%);
+    background: linear-gradient(100deg, #BFE9FF 0%, #25A8FF 45%, #0B7BDD 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

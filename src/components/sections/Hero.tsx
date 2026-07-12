@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Aurora } from "@/components/ui/Aurora";
 
 // WebGL is client-only + heavy — load it after paint so the headline is instant.
-const HeroOrb = dynamic(() => import("@/components/three/HeroOrb"), {
+const HeroField = dynamic(() => import("@/components/three/HeroField"), {
   ssr: false,
   loading: () => null,
 });
@@ -26,14 +26,15 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-28">
       <Aurora />
-      {/* WebGL energy core */}
+      {/* WebGL kinetic energy field */}
       <div className="absolute inset-0 z-0">
-        <div className="relative mx-auto h-full w-full max-w-[1100px] opacity-90">
-          <HeroOrb />
+        <div className="relative h-full w-full">
+          <HeroField />
         </div>
       </div>
-      {/* radial vignette for legibility */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(120%_90%_at_50%_50%,transparent_25%,rgba(6,6,7,0.55)_70%,#060607_100%)]" />
+      {/* legibility washes: darken the top for the headline, keep the field glowing below */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,#060607_0%,rgba(6,6,7,0.55)_30%,transparent_55%,rgba(6,6,7,0.35)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(120%_80%_at_50%_40%,transparent_30%,rgba(6,6,7,0.5)_85%)]" />
 
       <div className="container-x relative z-10">
         <motion.p

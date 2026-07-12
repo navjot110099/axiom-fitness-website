@@ -81,7 +81,7 @@ export function ContactForm() {
                   cy="40"
                   r="36"
                   fill="none"
-                  stroke="#C7F94B"
+                  stroke="#25A8FF"
                   strokeWidth="2"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
@@ -90,7 +90,7 @@ export function ContactForm() {
                 <motion.path
                   d="M25 41 L36 52 L57 29"
                   fill="none"
-                  stroke="#C7F94B"
+                  stroke="#25A8FF"
                   strokeWidth="3.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"

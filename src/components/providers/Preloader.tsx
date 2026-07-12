@@ -90,7 +90,7 @@ export function Preloader() {
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(199,249,75,${p.a})`;
+        ctx.fillStyle = `rgba(37,168,255,${p.a})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(render);
@@ -144,7 +144,7 @@ export function Preloader() {
           >
             <motion.path
               fill="none"
-              stroke="#C7F94B"
+              stroke="#25A8FF"
               strokeWidth="1.5"
               animate={{
                 d: [
@@ -155,7 +155,7 @@ export function Preloader() {
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            <circle cx="50" cy="50" r="4" fill="#C7F94B" />
+            <circle cx="50" cy="50" r="4" fill="#25A8FF" />
           </motion.svg>
 
           {/* wordmark split reveal */}

@@ -4,14 +4,17 @@ import { useEffect, useRef } from "react";
 import { lerp, clamp } from "@/lib/utils";
 
 /**
- * Luxury cursor with spring physics + velocity stretch.
- * A precise dot tracks 1:1; a trailing ring eases behind, stretches along its
- * travel vector proportional to speed, and swells / labels itself over
- * [data-cursor] targets. Desktop + fine-pointer only; respects reduced-motion.
+ * AXIOM performance cursor.
+ * A crisp leading dot tracks the pointer 1:1. Behind it, a motion streak
+ * elongates along the travel vector in proportion to speed — reading as
+ * kinetic energy. Over interactive [data-cursor] targets the streak resolves
+ * into a focus reticle (four corner brackets) with an optional label, evoking
+ * precision / targeting. Desktop + fine-pointer only; respects reduced-motion.
  */
 export function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const streakRef = useRef<HTMLDivElement>(null);
+  const reticleRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -21,13 +24,14 @@ export function Cursor() {
 
     document.body.classList.add("has-cursor");
     const dot = dotRef.current!;
-    const ring = ringRef.current!;
+    const streak = streakRef.current!;
+    const reticle = reticleRef.current!;
     const label = labelRef.current!;
 
     const mouse = { x: innerWidth / 2, y: innerHeight / 2 };
-    const ringPos = { x: mouse.x, y: mouse.y };
-    let scale = 1;
-    let targetScale = 1;
+    const trail = { x: mouse.x, y: mouse.y };
+    let hovering = false;
+    let ret = 0; // eased reticle presence 0..1
     let raf = 0;
 
     const onMove = (e: PointerEvent) => {
@@ -37,22 +41,29 @@ export function Cursor() {
     };
 
     const render = () => {
-      const px = ringPos.x;
-      const py = ringPos.y;
-      ringPos.x = lerp(ringPos.x, mouse.x, 0.16);
-      ringPos.y = lerp(ringPos.y, mouse.y, 0.16);
-      scale = lerp(scale, targetScale, 0.15);
+      const px = trail.x;
+      const py = trail.y;
+      trail.x = lerp(trail.x, mouse.x, 0.2);
+      trail.y = lerp(trail.y, mouse.y, 0.2);
 
-      // velocity → directional stretch
-      const dx = ringPos.x - px;
-      const dy = ringPos.y - py;
+      const dx = trail.x - px;
+      const dy = trail.y - py;
       const speed = Math.hypot(dx, dy);
-      const stretch = clamp(speed / 22, 0, 0.45);
       const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
 
-      ring.style.transform =
-        `translate3d(${ringPos.x}px, ${ringPos.y}px, 0) translate(-50%, -50%) ` +
-        `rotate(${angle}deg) scale(${scale * (1 + stretch)}, ${scale * (1 - stretch)})`;
+      ret = lerp(ret, hovering ? 1 : 0, 0.18);
+
+      // motion streak: length grows with speed, shrinks as the reticle takes over
+      const len = clamp(10 + speed * 3.2, 10, 90) * (1 - ret);
+      streak.style.transform =
+        `translate3d(${trail.x}px, ${trail.y}px, 0) translate(-50%, -50%) rotate(${angle}deg) scaleX(${len / 10})`;
+      streak.style.opacity = `${clamp(0.25 + speed * 0.05, 0.25, 0.9) * (1 - ret)}`;
+
+      // focus reticle
+      const scale = 0.6 + ret * 0.4;
+      reticle.style.transform = `translate3d(${trail.x}px, ${trail.y}px, 0) translate(-50%, -50%) scale(${scale}) rotate(${ret * 45 - 45}deg)`;
+      reticle.style.opacity = `${ret}`;
+
       raf = requestAnimationFrame(render);
     };
     render();
@@ -60,9 +71,7 @@ export function Cursor() {
     const onOver = (e: Event) => {
       const t = (e.target as HTMLElement).closest<HTMLElement>("[data-cursor]");
       if (!t) return;
-      const mode = t.dataset.cursor || "hover";
-      targetScale = mode === "cta" ? 2.7 : 2;
-      ring.dataset.active = "true";
+      hovering = true;
       const text = t.dataset.cursorLabel || "";
       label.textContent = text;
       label.style.opacity = text ? "1" : "0";
@@ -70,8 +79,7 @@ export function Cursor() {
     const onOut = (e: Event) => {
       const t = (e.target as HTMLElement).closest<HTMLElement>("[data-cursor]");
       if (!t) return;
-      targetScale = 1;
-      ring.dataset.active = "false";
+      hovering = false;
       label.style.opacity = "0";
     };
 
@@ -89,18 +97,29 @@ export function Cursor() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999] hidden md:block">
+      {/* motion streak */}
+      <div
+        ref={streakRef}
+        className="absolute left-0 top-0 h-[2px] w-[10px] rounded-full bg-voltage will-change-transform"
+        style={{ mixBlendMode: "screen" }}
+      />
+      {/* leading dot */}
       <div
         ref={dotRef}
-        className="absolute left-0 top-0 h-1.5 w-1.5 rounded-full bg-voltage mix-blend-difference"
+        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-voltage shadow-[0_0_10px_2px_rgba(37,168,255,0.6)]"
       />
+      {/* focus reticle (corner brackets) */}
       <div
-        ref={ringRef}
-        data-active="false"
-        className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-bone/40 transition-colors duration-300 will-change-transform data-[active=true]:border-voltage data-[active=true]:bg-voltage/5"
+        ref={reticleRef}
+        className="absolute left-0 top-0 h-11 w-11 opacity-0 will-change-transform"
       >
+        <span className="absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-voltage" />
+        <span className="absolute right-0 top-0 h-3 w-3 border-r-2 border-t-2 border-voltage" />
+        <span className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-voltage" />
+        <span className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-voltage" />
         <span
           ref={labelRef}
-          className="rotate-0 font-mono text-[9px] uppercase tracking-widest text-voltage opacity-0 transition-opacity"
+          className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap font-mono text-[9px] uppercase tracking-widest text-voltage opacity-0 transition-opacity"
         />
       </div>
     </div>

@@ -12,7 +12,7 @@ const button = cva(
     variants: {
       variant: {
         primary:
-          "bg-voltage text-void hover:bg-white hover:shadow-[0_0_34px_-6px_rgba(199,249,75,0.65)]",
+          "bg-voltage text-void hover:bg-white hover:shadow-[0_0_34px_-6px_rgba(37,168,255,0.65)]",
         ghost:
           "border border-line bg-white/[0.02] text-bone hover:border-bone/40 hover:shadow-[0_0_28px_-10px_rgba(244,243,238,0.4)]",
         ember:

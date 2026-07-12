@@ -21,7 +21,7 @@ export function ChallengeLeaderboardTeaser() {
         className="pointer-events-none absolute inset-0 opacity-[0.5]"
         style={{
           background:
-            "radial-gradient(600px circle at 85% 20%, rgba(199,249,75,0.08), transparent 60%)",
+            "radial-gradient(600px circle at 85% 20%, rgba(37,168,255,0.08), transparent 60%)",
         }}
       />
       <div className="container-x relative">

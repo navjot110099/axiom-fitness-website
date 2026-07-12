@@ -24,11 +24,11 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 const TONE: Record<string, string> = {
-  Snowflake: "#5AA9FF",
+  Snowflake: "#6FD3FF",
   Flame: "#FF4D1C",
   Sun: "#FFB061",
   Wind: "#7FB3FF",
-  Activity: "#C7F94B",
+  Activity: "#25A8FF",
   Moon: "#9C8CFF",
 };
 
@@ -42,7 +42,7 @@ function ModalityCard({
   icon: string;
 }) {
   const Icon = ICONS[icon] ?? Activity;
-  const color = TONE[icon] ?? "#C7F94B";
+  const color = TONE[icon] ?? "#25A8FF";
 
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = e.currentTarget;

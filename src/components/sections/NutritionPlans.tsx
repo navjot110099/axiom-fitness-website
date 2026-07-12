@@ -8,8 +8,8 @@ import { Badge } from "@/components/ui/Badge";
 import { MEAL_PLANS } from "@/lib/data";
 
 const ACCENT_HEX: Record<string, string> = {
-  voltage: "#C7F94B",
-  plasma: "#5AA9FF",
+  voltage: "#25A8FF",
+  plasma: "#6FD3FF",
   gold: "#E9C56A",
 };
 
@@ -17,7 +17,7 @@ export function NutritionPlanCards() {
   return (
     <div className="grid gap-6 lg:grid-cols-3">
       {MEAL_PLANS.map((plan) => {
-        const hex = ACCENT_HEX[plan.accent] ?? "#C7F94B";
+        const hex = ACCENT_HEX[plan.accent] ?? "#25A8FF";
         return (
           <TiltCard key={plan.name} className="h-full rounded-3xl" glow={false}>
             <div
