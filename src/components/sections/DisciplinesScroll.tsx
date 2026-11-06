@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@/lib/useGSAP";
 import { DISCIPLINES_FULL } from "@/lib/data";
 import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,10 +15,19 @@ gsap.registerPlugin(ScrollTrigger);
  * Pinned horizontal-scroll gallery of disciplines.
  * The vertical scroll is translated into a horizontal track move while the
  * section is pinned — a classic Locomotive/Obys storytelling device.
+ *
+ * Reduced-motion fallback: no pin/scrub (useGSAP bails), and the track becomes
+ * a natively scrollable horizontal rail so every card stays reachable by
+ * scroll + keyboard instead of being clipped by the pinned overflow.
  */
 export function DisciplinesScroll() {
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const [reduce, setReduce] = useState(false);
+
+  useEffect(() => {
+    setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useGSAP(() => {
     const el = track.current!;
@@ -39,10 +49,18 @@ export function DisciplinesScroll() {
   }, { scope: root });
 
   return (
-    <section ref={root} className="relative lg:h-screen lg:overflow-hidden">
+    <section
+      ref={root}
+      className={cn("relative", !reduce && "lg:h-screen lg:overflow-hidden")}
+    >
       <div
         ref={track}
-        className="flex flex-col gap-6 py-10 lg:h-full lg:flex-row lg:items-center lg:gap-8 lg:py-0 lg:pl-[8vw] lg:pr-[12vw]"
+        className={cn(
+          "flex flex-col gap-6 py-10 lg:flex-row lg:gap-8",
+          reduce
+            ? "lg:snap-x lg:snap-mandatory lg:overflow-x-auto lg:px-[8vw] lg:pb-8"
+            : "lg:h-full lg:items-center lg:py-0 lg:pl-[8vw] lg:pr-[12vw]",
+        )}
       >
         {/* intro panel */}
         <div className="shrink-0 lg:w-[28vw]">

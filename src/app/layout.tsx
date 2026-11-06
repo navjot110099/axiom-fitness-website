@@ -7,18 +7,18 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BRAND } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = "https://axiom.fit";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "AXIOM — The Operating System for the Human Body",
     template: "%s — AXIOM",
   },
   description:
     "AXIOM is a luxury fitness & wellness ecosystem: twelve training disciplines, a full recovery circuit, performance nutrition, and an AI intelligence layer that unifies it all.",
+  applicationName: BRAND.name,
   keywords: [
     "luxury gym",
     "fitness club",
@@ -31,9 +31,10 @@ export const metadata: Metadata = {
     "New York gym",
   ],
   authors: [{ name: BRAND.name }],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: siteUrl,
+    url: SITE_URL,
     title: "AXIOM — The Operating System for the Human Body",
     description:
       "Twelve disciplines. A full recovery circuit. Performance nutrition. One intelligence layer. This is not a gym — it is an ecosystem.",
@@ -45,7 +46,11 @@ export const metadata: Metadata = {
     description:
       "A luxury fitness & wellness ecosystem with an AI intelligence layer.",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export const viewport: Viewport = {
@@ -60,6 +65,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${archivo.variable} ${inter.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Speed up the first Unsplash image (LCP) */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="grain relative min-h-screen bg-void">
         <a
           href="#main"

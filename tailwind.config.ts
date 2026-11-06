@@ -24,7 +24,7 @@ const config: Config = {
         // Type
         bone: "#F4F3EE",
         ash: "#9A9A94",
-        faint: "#6A6A66",
+        faint: "#83837B",
         // Signal accents
         voltage: "#25A8FF", // electric azure — primary energy
         "voltage-deep": "#0B7BDD",

@@ -46,6 +46,14 @@
     color: theme(colors.void);
   }
 
+  /* Baseline visible focus for keyboard users on every interactive element.
+     Uses :where() (0 specificity) so component-level focus styles still win. */
+  :where(a, button, [role="button"], [tabindex]:not([tabindex="-1"]), input, select, textarea, summary):focus-visible {
+    outline: 2px solid theme(colors.voltage);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;

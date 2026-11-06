@@ -146,6 +146,7 @@ export function Preloader() {
               fill="none"
               stroke="#25A8FF"
               strokeWidth="1.5"
+              initial={{ d: "M50,8 C74,8 92,26 92,50 C92,74 74,92 50,92 C26,92 8,74 8,50 C8,26 26,8 50,8Z" }}
               animate={{
                 d: [
                   "M50,8 C74,8 92,26 92,50 C92,74 74,92 50,92 C26,92 8,74 8,50 C8,26 26,8 50,8Z",

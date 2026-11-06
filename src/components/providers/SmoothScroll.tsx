@@ -4,11 +4,14 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionConfig } from "framer-motion";
 
 /**
  * Global smooth-scroll driver.
  * Lenis provides inertial scrolling; we hand its RAF to GSAP's ticker so
- * ScrollTrigger stays perfectly in sync (no double RAF, no jitter).
+ * ScrollTrigger stays perfectly in sync (no double RAF, no jitter). Lenis is
+ * skipped entirely under prefers-reduced-motion, and MotionConfig
+ * reducedMotion="user" makes every Framer Motion animation honor it too.
  */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -40,5 +43,5 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <>{children}</>;
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
 }
